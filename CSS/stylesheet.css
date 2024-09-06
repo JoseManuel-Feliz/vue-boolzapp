@@ -29,24 +29,43 @@ background: linear-gradient(to top, rgba(16, 149, 136, 0.25), #dddbd2 50%, #dddb
  color:   #dddbd2 ;
 }
 
-header{
-    height: 150px;
-}
-
 section{
     background-color: blue;
     border: dashed red 1px;
 }
 
 /* UTILS */
+
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
 .d-flex{
     display: flex;
 }
 
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.justify-end{
+justify-content: flex-end;
+}
+.align-content-start{
+    align-content: start;
+}
 .justify-center{
     justify-content: center;
 }
 
+.justify-between{
+    justify-content: space-between;
+
+}
+
+.justify-evenly{
+    justify-content: space-evenly;
+}
 .align-center{
     align-items: center;
 }
@@ -59,7 +78,17 @@ section{
     flex-grow: 1;
 }
 
+.flex-column{
+flex-direction: column;
+}
 
+.img-fluid{
+    height:  100%;
+}
+
+.text-center{
+    text-align: center;
+}
 
 /* LAYOUT */
 .row{
@@ -88,11 +117,18 @@ section{
 .h-80{
 height: 80px;
 }
+.h-100{
+    height: 100%;
+}
 .vh-100{
     height: 100vh;
 }
 .h-v{
     height: calc(100% - 140px);
+}
+
+.w-100{
+    width: 100%;
 }
 
 /* SPACING */
@@ -102,6 +138,9 @@ height: 80px;
 .p-10{
     padding: 10px;
 }
+.p-20{
+    padding: 20px;
+}
 .p-30{
     padding: 30px;
 }
@@ -110,12 +149,18 @@ height: 80px;
     padding: 10px 0;
 }
 
+.mt-10{
+    margin-top: 10px;
+}
 .my-10{
     margin: 10px 0;
 }
 
 .ms-10{
     margin-left: 10px;
+}
+.me-10{
+    margin-right:10px ;
 }
 
 /* BORDERS */
@@ -129,7 +174,22 @@ height: 80px;
 
 }
 
+.sent-messages-1{
+    overflow-y: auto;
+
+}
 .contacts-list{
     overflow-y: auto;
 height: calc(100% - 200px);
+}
+
+.col-text-message{
+    flex-basis: calc(100% / 12);
+}
+.recive-message,.sent-message{
+    flex-basis: calc(100% / 2.5);
+}
+
+.col-10{
+    flex-basis: calc(100% / 10);
 }
