@@ -20,40 +20,44 @@
 /* GENERICS */
 
 body{
-height: 100vh;
-background-image: linear-gradient( to top, rgb(16, 149, 135,0.15),rgba(221, 219, 210) );
+
+background: linear-gradient(to top, rgba(16, 149, 136, 0.25), #dddbd2 50%, #dddbd2 75%, #109587 75%);
+ color:   #dddbd2 ;
 }
 
 header{
     height: 150px;
 }
 
-main{
-    background: #fff;
-    height: calc(100% - 10%);
-    width: 1300px;
-    position: fixed;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 section{
     background-color: blue;
     border: dashed red 1px;
 }
 
+/* UTILS */
+.d-flex{
+    display: flex;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-center{
+    align-items: center;
+}
 /* LAYOUT */
 .row{
-display: flex;
+    display: flex;
 }
 
 .col.contacts{
-flex-basis: calc(100%/2);
+    flex-basis: calc(100%/2);
 }
 
 .col.messages{
     flex-basis: calc(100%);
-
+    
 }
 
 /* SIZES */
@@ -61,9 +65,15 @@ flex-basis: calc(100%/2);
     height: 70px;
 }
 .vh-100{
-    height: 100%;
+    height: 100vh;
 }
 .h-v{
     height: calc(100% - 140px);
 }
 
+
+#main-content{
+    height: calc(100% - 10%);
+    width: 80%;
+
+}
