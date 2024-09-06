@@ -1,0 +1,21 @@
+/* RESET */
+*{padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* GENERICS */
+
+body{
+ background-color: rgba(221, 219, 210, 0.932); 
+height: 100vh;
+background-image: linear-gradient( to top, rgb(16, 149, 135,0.14),rgba(221, 219, 210, 0.1) );
+}
+
+header{
+    height: 150px;
+    background-color:rgb(16, 149, 135) ;
+}
+
+
+
