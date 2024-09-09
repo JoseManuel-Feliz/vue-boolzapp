@@ -104,14 +104,14 @@
 
                         </div>
 
-
-
-                        <!--
+                    </div>
+                    <p>{{newSentMessage}}</p>
+                    <!--
 
                          TODO: 
                         
                          -->
-                        <!-- <div class="mt-10 h-100  cols d-flex align-center flex-wrap gap-20">
+                    <!-- <div class="mt-10 h-100  cols d-flex align-center flex-wrap gap-20">
                         </div> -->
                 </section>
 
@@ -122,7 +122,8 @@
                     <i class="fa-regular fa-face-smile col-text-message text-center"></i>
 
                     <div class="search-bar flex-grow-1 col-text-message">
-                        <input type="text" class="p-10 w-100" placeholder="Username">
+                        <input type="text" class="p-10 w-100" placeholder="Username" v-model.trim="newSentMessage"
+                            @keyup.enter="sentNewMessage(newSentMessage)">
                     </div>
 
                     <i class="fa-solid fa-microphone col-text-message text-center"></i>
