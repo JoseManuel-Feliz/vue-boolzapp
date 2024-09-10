@@ -66,7 +66,7 @@
                 </div>
                 <!-- CONTACTS LIST -->
                 <section class="contacts-list">
-                    <div class="contact-wrapper" v-for="(contact, index) in searchContact "
+                    <div class="contact-wrapper" :class="isActive(index)" v-for="(contact, index) in searchContact "
                         @click="getCurrentIndex(index)">
                         <img class="img-fluid border-rounded" :src="contact.avatar" :alt="`${contact.name} image`">
                         <span class="contact-name ms-10">{{contact.name}}</span>

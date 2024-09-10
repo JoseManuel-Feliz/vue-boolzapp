@@ -4,6 +4,7 @@ const { createApp } = Vue
 
 createApp({
     data: () => ({
+        active: 'bg-grey',
         currentIndex: 0,
         newSentMessage: '',
         recivedClass: 'recived',
@@ -212,7 +213,11 @@ createApp({
 
             }, 1000);
         },
-
+        isActive(index) {
+            if (this.currentIndex === index) {
+                return this.active
+            }
+        }
 
 
 
