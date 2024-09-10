@@ -60,11 +60,12 @@
                 <!-- SEARCH CONTACTS BAR -->
                 <div class="search-bar d-flex p-5 bg-light-grey">
                     <span class="search-btn bg-white p-10">
-                        <i class="fa-solid fa-magnifying-glass">
-                        </i>
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <input type="text" class="p-10 flex-grow-1 search-input" placeholder="Username">
+                    <input type="text" class="p-10 flex-grow-1 search-input" placeholder="Username" v-model="search"
+                        @keyup.enter="searchContact()">
                 </div>
+                <p>{{search}}</p>
 
                 <!-- CONTACTS LIST -->
                 <section class="contacts-list">
@@ -108,7 +109,8 @@
                         <div class="d-flex flex-wrap gap-20 ">
 
                             <div class="message w-100" v-for="message in contacts[currentIndex].messages">
-                                <div class="wrapper cols" :class="message.status= received ? recivedClass: sentClass">
+                                <div class="wrapper cols"
+                                    :class="(message.status=== 'received') ? recivedClass: sentClass">
                                     <p class="text-message">{{message.message}}</p>
                                     <small class="date-time">{{message.date}}</small>
                                 </div>

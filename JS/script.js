@@ -8,6 +8,7 @@ createApp({
         newSentMessage: '',
         recivedClass: 'recived',
         sentClass: 'sent',
+        search: '',
         contacts: [
             {
                 name: 'Michele',
@@ -176,6 +177,10 @@ createApp({
     computed: {
         currentContact() {
             return this.contacts[this.currentIndex];
+        },
+        searchContact() {
+            return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()))
+
         }
 
     },
@@ -202,9 +207,10 @@ createApp({
                 })
 
             }, 1000);
+        },
 
 
 
-        }
+
     }
 }).mount('#app')
