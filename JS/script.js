@@ -6,6 +6,8 @@ createApp({
     data: () => ({
         currentIndex: 0,
         newSentMessage: '',
+        recivedClass: 'recived',
+        sentClass: 'sent',
         contacts: [
             {
                 name: 'Michele',
@@ -168,28 +170,41 @@ createApp({
                     }
                 ],
             }
-        ]
+        ],
 
     }),
     computed: {
+        currentContact() {
+            return this.contacts[this.currentIndex];
+        }
 
     },
     methods: {
 
-        getCurrentIndex(index) {
-            this.currentIndex = index
-            console.log(this.currentIndex)
-        },
+        sentNewMessage() {
 
-        sentNewMessage(element) {
-            curentContact = this.contacts[this.currentIndex]
-            console.log(curentContact)
-
-            if (element.length > 0) {
-                curentContact.messages.push({ message: element, status: 'sent' })
+            if (this.newSentMessage.trim()) {
+                this.currentContact.messages.push({
+                    message: this.newSentMessage,
+                    status: 'sent'
+                });
             }
 
             this.newSentMessage = ''
+        },
+        replyMessage() {
+
+            setTimeout(() => {
+
+                this.currentContact.messages.push({
+                    message: 'Ok',
+                    status: 'received'
+                })
+
+            }, 1000);
+
+
+
         }
     }
 }).mount('#app')

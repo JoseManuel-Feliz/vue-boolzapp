@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Boolzapp</title>
+    <!-- GOGGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
     <!-- FONT-AWESOME ICONS -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css'
         integrity='sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=='
@@ -61,7 +68,7 @@
 
                 <!-- CONTACTS LIST -->
                 <section class="contacts-list">
-                    <div class="contact-wrapper" v-for="(contact, index) in contacts " @click="getCurrentIndex(index)">
+                    <div class="contact-wrapper" v-for="(contact, index) in contacts " @click="currentIndex = index">
                         <img class="img-fluid border-rounded" :src="contact.avatar" :alt="`${contact.name} image`">
                         <span class="contact-name ms-10">{{contact.name}}</span>
                     </div>
@@ -96,34 +103,28 @@
                 <section class="bg-green h-v sent-messages-1">
 
 
-                    <div class="container d-flex justify-between" v-for="message in contacts[currentIndex].messages">
+                    <div class="container">
 
-                        <div class="mt-10 h-100  cols  d-flex flex-wrap gap-20">
+                        <div class="d-flex flex-wrap gap-20 ">
 
-                            <p>{{message.message}}</p>
-
+                            <div class="message w-100" v-for="message in contacts[currentIndex].messages">
+                                <div class="wrapper cols" :class="message.status= received ? recivedClass: sentClass">
+                                    <p class="text-message">{{message.message}}</p>
+                                    <small class="date-time">{{message.date}}</small>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
-                    <p>{{newSentMessage}}</p>
-                    <!--
-
-                         TODO: 
-                        
-                         -->
-                    <!-- <div class="mt-10 h-100  cols d-flex align-center flex-wrap gap-20">
-                        </div> -->
                 </section>
 
-                <!--                     <div class="bg-green h-70 w-100"></div> -->
                 <!-- TEXT-MESSAGE BAR -->
                 <footer class="h-70 bg-light-grey d-flex justify-between align-center">
 
                     <i class="fa-regular fa-face-smile col-text-message text-center"></i>
 
                     <div class="search-bar flex-grow-1 col-text-message">
-                        <input type="text" class="p-10 w-100" placeholder="Username" v-model.trim="newSentMessage"
-                            @keyup.enter="sentNewMessage(newSentMessage)">
+                        <input type="text" class="p-10 w-100" placeholder="Username" v-model="newSentMessage"
+                            @keyup.enter="sentNewMessage(replyMessage())">
                     </div>
 
                     <i class="fa-solid fa-microphone col-text-message text-center"></i>
