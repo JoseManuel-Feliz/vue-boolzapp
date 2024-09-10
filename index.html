@@ -123,8 +123,8 @@
                     <i class="fa-regular fa-face-smile col-text-message text-center"></i>
 
                     <div class="search-bar flex-grow-1 col-text-message">
-                        <input type="text" class="p-10 w-100" placeholder="Username" v-model="newSentMessage"
-                            @keyup.enter="newSentMessage ? sentNewMessage(replyMessage()):''">
+                        <input type="text" class="p-10 w-100" placeholder="Username" v-model.trim="newSentMessage"
+                            @keyup.enter=" newSentMessage ? sentNewMessage(replyMessage()) :'' ">
                     </div>
 
                     <i class="fa-solid fa-microphone col-text-message text-center"></i>
