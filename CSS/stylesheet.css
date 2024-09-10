@@ -3,6 +3,7 @@
 --green:#109587;
 --light-grey:#EAEAE9;    
 --white:#ffffff;
+--dark-gray:#636161;
 --grey:#B1B1B1;
 --light-blue:#8EDAFC;
 }
@@ -19,6 +20,10 @@
 }
 .bg-light-blue{
     background-color: var(--light-blue);
+}
+
+.c-grey{
+    color: var(--dark-gray)
 }
 
 
@@ -245,8 +250,13 @@ body{
 i.fa-bell-slash{
     color:var(--light-blue);
     border-radius: 50%;
-
+    height: 40px;
+    width: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
+
 
 
 
