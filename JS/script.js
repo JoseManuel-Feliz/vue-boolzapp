@@ -185,6 +185,10 @@ createApp({
 
     },
     methods: {
+        getCurrentIndex(index) {
+            this.currentIndex = index
+            console.log(this.currentIndex)
+        },
 
         sentNewMessage() {
 

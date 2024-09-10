@@ -62,13 +62,12 @@
                     <span class="search-btn bg-white p-10">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <input type="text" class="p-10 flex-grow-1 search-input" placeholder="Username" v-model="search"
-                        @keyup.enter="searchContact()">
+                    <input type="text" class="p-10 flex-grow-1 search-input" placeholder="Username" v-model="search">
                 </div>
                 <!-- CONTACTS LIST -->
                 <section class="contacts-list">
                     <div class="contact-wrapper" v-for="(contact, index) in searchContact "
-                        @click="currentIndex = index">
+                        @click="getCurrentIndex(index)">
                         <img class="img-fluid border-rounded" :src="contact.avatar" :alt="`${contact.name} image`">
                         <span class="contact-name ms-10">{{contact.name}}</span>
                     </div>
@@ -109,7 +108,7 @@
 
                             <div class="message w-100" v-for="message in contacts[currentIndex].messages">
                                 <div class="wrapper cols"
-                                    :class="(message.status=== 'received') ? recivedClass: sentClass">
+                                    :class="(message.status === 'received') ? recivedClass: sentClass">
                                     <p class="text-message">{{message.message}}</p>
                                     <small class="date-time">{{message.date}}</small>
                                 </div>
