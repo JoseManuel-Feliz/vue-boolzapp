@@ -65,11 +65,10 @@
                     <input type="text" class="p-10 flex-grow-1 search-input" placeholder="Username" v-model="search"
                         @keyup.enter="searchContact()">
                 </div>
-                <p>{{search}}</p>
-
                 <!-- CONTACTS LIST -->
                 <section class="contacts-list">
-                    <div class="contact-wrapper" v-for="(contact, index) in contacts " @click="currentIndex = index">
+                    <div class="contact-wrapper" v-for="(contact, index) in searchContact "
+                        @click="currentIndex = index">
                         <img class="img-fluid border-rounded" :src="contact.avatar" :alt="`${contact.name} image`">
                         <span class="contact-name ms-10">{{contact.name}}</span>
                     </div>
