@@ -208,11 +208,11 @@ body{
 .recive-message,.sent-message{
 }
 
-.cols{
+/* .cols{
     flex-basis: calc(100% / 2.5 - 20px /2.5);
     
 }
-
+ */
 /* fa solid ico */
 
 .fa-solid,.fa-regular{
@@ -251,15 +251,18 @@ i.fa-bell-slash{
 
 
 .message{
-    flex-wrap: wrap;
-    height: 50px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     border-radius: 10px;
-    padding: 5px 15px;
+    padding: 10px;
+    max-width: 50%;
+    background-color: #D5F9BA;
+    overflow-wrap: anywhere;
 }
 .date-time{
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+align-items: flex-end;
     flex-basis: 100%;
     color: var(--grey);
 }
@@ -269,12 +272,16 @@ i.fa-bell-slash{
 
 }
 
-.sent{
+.row.sent{
     justify-content: flex-end;
-    background-color: #D5F9BA;
 }
 
-.recived{
+.message.received{
     background-color: #ffffff;
-    justify-content: flex-start;
 }
+
+/* .row-cols-1>* { */
+/* .vedro>*{
+        flex: 0 0 auto;
+        width: 100%;
+} */

@@ -102,16 +102,13 @@
                 <section class="bg-green h-v sent-messages-1">
 
 
-                    <div class="container">
+                    <div class="container p-10" v-for="message in contacts[currentIndex].messages">
 
-                        <div class="d-flex flex-wrap gap-20 ">
+                        <div class="row" :class="message.status">
 
-                            <div class="message w-100" v-for="message in contacts[currentIndex].messages">
-                                <div class="wrapper cols"
-                                    :class="(message.status === 'received') ? recivedClass: sentClass">
-                                    <p class="text-message">{{message.message}}</p>
-                                    <small class="date-time">{{message.date}}</small>
-                                </div>
+                            <div class="wrapper cols message" :class="message.status">
+                                <p class="text-message">{{message.message}}</p>
+                                <small class="date-time">{{message.date}}</small>
                             </div>
                         </div>
                     </div>
@@ -127,7 +124,9 @@
                             @keyup.enter=" newSentMessage ? sentNewMessage(replyMessage()) :'' ">
                     </div>
 
-                    <i class="fa-solid fa-microphone col-text-message text-center"></i>
+                    <i class="fa-solid  col-text-message text-center"
+                        :class="newSentMessage ? 'fa-circle-arrow-up' : 'fa-microphone'"
+                        @click=" newSentMessage ? sentNewMessage(replyMessage()) :'' "></i>
                 </footer>
             </section>
         </div>
