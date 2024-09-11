@@ -1,10 +1,8 @@
-console.log('JS OK')
-
 const { createApp } = Vue
 
 createApp({
     data: () => ({
-        active: 'bg-grey',
+        active: 'bg-light-grey',
         currentIndex: 0,
         newSentMessage: '',
         recivedClass: 'recived',
@@ -173,19 +171,32 @@ createApp({
                 ],
             }
         ],
+        max: 7,
+        DateTime: luxon.DateTime,
+
 
     }),
     computed: {
         currentContact() {
             return this.contacts[this.currentIndex];
         },
-        searchContact() {
+        filteringContacts() {
             return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()))
 
-        }
+        },
 
     },
     methods: {
+        currentTime() {
+            time = this.randomNumber()
+            day = this.randomNumber()
+            const randomDay = this.DateTime.now().plus({ days: day }).minus({ hours: time }).toLocaleString(this.DateTime.DATETIME_MED_WITH_WEEKDAY)
+            return randomDay
+        },
+        randomNumber() {
+            const Number = Math.floor(Math.random() * (this.max + 1));
+            return Number
+        },
         getCurrentIndex(index) {
             this.currentIndex = index
             console.log(this.currentIndex)
@@ -196,7 +207,8 @@ createApp({
             if (this.newSentMessage.trim()) {
                 this.currentContact.messages.push({
                     message: this.newSentMessage,
-                    status: 'sent'
+                    status: 'sent',
+                    date: this.getDayTime()
                 });
             }
 
@@ -208,6 +220,7 @@ createApp({
 
                 this.currentContact.messages.push({
                     message: 'Ok',
+                    date: this.getDayTime(),
                     status: 'received'
                 })
 
@@ -217,8 +230,24 @@ createApp({
             if (this.currentIndex === index) {
                 return this.active
             }
-        }
+        },
 
+
+        lastElement(index) {
+            const { messages } = this.contacts[index]
+            const lastMessageIndex = messages.length - 1
+            const lastmessage = messages[lastMessageIndex]
+            return lastmessage
+
+        },
+        getDayTime() {
+            return this.DateTime.now().toLocaleString(this.DateTime.DATETIME_MED_WITH_WEEKDAY)
+
+        },
+        /* formatDate() {
+            const dt = this.DateTime.local('10/01/2020 15:51:00')
+            return console.table(dt.fromISO())
+        } */
 
 
     }

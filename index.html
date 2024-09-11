@@ -18,8 +18,12 @@
         crossorigin='anonymous' />
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="./CSS/stylesheet.css">
+    <!-- LUXON SCRIPT -->
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.5.0/luxon.min.js'
+        integrity='sha512-SN7iwxiJt9nFKiLayg3NjLItXPwRfBr4SQSIugMeBFrD4lIFJe1Z/exkTZYAg3Ul+AfZEGws2PQ+xSoaWfxRQQ=='
+        crossorigin='anonymous'></script>
     <!-- VUE JS -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.1/vue.global.min.js'
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.1/vue.global.min.js'
         integrity='sha512-cmp274AnpRp94+/qwwCeVM3359t9cBTbui2NRLDFm11vGxxgdKxQssWj9qv2XbRZFFxpy6BIxmZnK8lGNPVEJQ=='
         crossorigin='anonymous'></script>
     <!-- SCRIPT JS -->
@@ -66,10 +70,17 @@
                 </div>
                 <!-- CONTACTS LIST -->
                 <section class="contacts-list">
-                    <div class="contact-wrapper" :class="isActive(index)" v-for="(contact, index) in searchContact "
-                        @click="getCurrentIndex(index)">
-                        <img class="img-fluid border-rounded" :src="contact.avatar" :alt="`${contact.name} image`">
-                        <span class="contact-name ms-10">{{contact.name}}</span>
+                    <div class="contact-wrapper justify-between" :class="isActive(index)"
+                        v-for="(contact, index) in filteringContacts " @click="getCurrentIndex(index)">
+                        <div class="wrapper d-flex">
+                            <img class="img-fluid border-rounded" :src="contact.avatar" :alt="`${contact.name} image`">
+                            <div class="wrapper name last-message ms-10">
+                                <div class="contact-name">{{contact.name}}</div>
+                                <small>{{lastElement(index).message}}</small>
+                            </div>
+                        </div>
+                        <small class="align-self-start me-10 date">{{lastElement(index).date}}</small>
+
                     </div>
 
                 </section>
@@ -86,21 +97,20 @@
 
                         <div class="wrapper">
                             <div class="contact-name ms-10">{{contacts[currentIndex].name}}</div>
-                            <div class="contact-info ms-10">Ultimo accesso oggi alle</div>
+                            <small class="contact-info ms-10">Ultimo accesso {{currentTime()}}</small>
                         </div>
 
                     </div>
 
                     <div class="wrapper me-10">
-                        <i class="fa-solid fa-circle-notch"></i>
-                        <i class="fa-solid fa-message mx-10"></i>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip mx-10"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </header>
 
                 <!-- MESSAGES SENT AND RECEIVED SECTION -->
                 <section class="bg-green h-v sent-messages-1">
-
 
                     <div class="container p-10" v-for="message in contacts[currentIndex].messages">
 

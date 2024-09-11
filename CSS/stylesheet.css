@@ -39,6 +39,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: lato;
+    font-size: 20px;
 }
 
 /* GENERICS */
@@ -52,7 +53,7 @@ body{
 /* UTILS */
 
 .container{
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 20px 0;
 }
@@ -202,6 +203,18 @@ body{
     
 }
 
+.last-message{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+width: 50%;
+}
+
+.date{
+    overflow-wrap: anywhere;
+    width: 20%;
+    text-align: end;
+}
 .sent-messages-1{
     background-image: url(../img/mine.png);
     overflow-y: auto;
@@ -242,6 +255,7 @@ body{
     padding: 10px 0 10px 15px;
     border-bottom: var(--light-grey) 1px solid;
     height: 80px;
+    display: flex;
     
 }
 
@@ -295,6 +309,11 @@ align-items: flex-end;
 
 .message.received{
     background-color: #ffffff;
+}
+
+small{
+    font-size: small;
+    color: var(--dark-gray);
 }
 
 /* .row-cols-1>* { */
